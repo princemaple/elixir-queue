@@ -3,7 +3,7 @@ defmodule Qex.Mixfile do
 
   def project do
     [app: :qex,
-     version: "0.1.0",
+     version: "0.2.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -35,9 +35,7 @@ defmodule Qex.Mixfile do
   end
 
   defp description do
-    """
-    A minimal FIFO queue implementation for Elixir
-    """
+    "A :queue wrapper with improvements in API and addition of Protocol implementations"
   end
 
   defp package do

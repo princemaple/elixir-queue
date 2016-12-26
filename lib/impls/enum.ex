@@ -1,13 +1,13 @@
 defimpl Enumerable, for: Qex do
-  def count(%Qex{in_list: in_list, out_list: out_list}) do
-    {:ok, Enum.count(in_list) + Enum.count(out_list)}
+  def count(%Qex{data: q}) do
+    {:ok, :queue.len(q)}
   end
 
-  def member?(%Qex{in_list: in_list, out_list: out_list}, item) do
-    {:ok, Enum.member?(in_list, item) or Enum.member?(out_list, item)}
+  def member?(%Qex{data: q}, item) do
+    {:ok, :queue.member(item, q)}
   end
 
-  def reduce(%Qex{in_list: in_list, out_list: out_list}, acc, fun) do
-    Enumerable.reduce(out_list ++ Enum.reverse(in_list), acc, fun)
+  def reduce(%Qex{data: q}, acc, fun) do
+    Enumerable.reduce(:queue.to_list(q), acc, fun)
   end
 end
