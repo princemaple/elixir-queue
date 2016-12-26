@@ -149,10 +149,10 @@ defmodule Qex do
   Split a queue into two, the front n items are put in the first queue
 
       iex> q = Qex.new 1..5
-      iex> {qex1, qex2} = Qex.split(q, 3)
-      iex> Enum.to_list qex1
+      iex> {q1, q2} = Qex.split(q, 3)
+      iex> Enum.to_list q1
       [1, 2, 3]
-      iex> Enum.to_list qex2
+      iex> Enum.to_list q2
       [4, 5]
   """
   @spec split(t, pos_integer) :: {t, t}
