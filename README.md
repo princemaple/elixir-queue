@@ -1,4 +1,4 @@
-# Qex
+# Qex [![Hex.pm](https://img.shields.io/hexpm/v/qex.svg)](https://hex.pm/packages/qex)
 
 A minimal FIFO queue implementation for Elixir
 
