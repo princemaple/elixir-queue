@@ -76,4 +76,9 @@ defmodule Qex do
       {%__MODULE__{data: q1}, %__MODULE__{data: q2}}
     end
   end
+
+  @spec join(t, t) :: t
+  def join(%__MODULE__{data: q1}, %__MODULE__{data: q2}) do
+    %__MODULE__{data: :queue.join(q1, q2)}
+  end
 end
