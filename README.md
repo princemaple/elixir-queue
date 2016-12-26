@@ -10,7 +10,7 @@ A primitive queue data structure that doesn't spawn a separate process
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The package can be installed as:
 
   1. Add `qex` to your list of dependencies in `mix.exs`:
 
@@ -19,4 +19,5 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [{:qex, "~> 0.1.0"}]
     end
     ```
-
+    
+  2. Run `mix deps.get`
