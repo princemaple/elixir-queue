@@ -21,6 +21,10 @@ The package can be installed as:
 
   2. Run `mix deps.get`
 
+## How to use
+
+[Read the docs](https://hexdocs.pm/qex/Qex.html)
+
 ## Why not "Queue"?
 
 The name is taken... [Hex link](https://hex.pm/packages/queue)
