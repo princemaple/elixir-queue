@@ -37,8 +37,6 @@ defmodule Qex.Mixfile do
   defp description do
     """
     A minimal FIFO queue implementation for Elixir
-
-    A primitive queue data structure that doesn't spawn a separate process
     """
   end
 
