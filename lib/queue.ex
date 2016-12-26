@@ -29,6 +29,8 @@ defmodule Queue do
   "<#Queue[]>"
   """
 
+  @opaque t :: %__MODULE__{}
+
   defstruct [in_list: [], out_list: []]
 
   @doc """
@@ -38,6 +40,7 @@ defmodule Queue do
   iex> Queue.new([1,2,3])
   %Queue{in_list: [], out_list: [1, 2, 3]}
   """
+  @spec new([term]) :: t
   def new(list \\ []) do
     %__MODULE__{out_list: list}
   end
@@ -55,6 +58,7 @@ defmodule Queue do
   iex> Queue.new([1,2,3]) |> Queue.push(4) |> Enum.count
   4
   """
+  @spec push(t, term) :: t
   def push(%Queue{in_list: in_list} = q, item) do
     %{q | in_list: [item | in_list]}
   end
@@ -77,6 +81,7 @@ defmodule Queue do
   iex> %Queue{in_list: [1, 2], out_list: []} |> Queue.pop
   {2, %Queue{in_list: [], out_list: [1]}}
   """
+  @spec pop(t, term) :: {term, t}
   def pop(q, default \\ nil)
 
   def pop(%Queue{in_list: [], out_list: []} = q, default), do: {default, q}
