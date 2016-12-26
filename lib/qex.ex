@@ -8,7 +8,7 @@ defmodule Qex do
   `Inspect`, `Collectable` and `Enumerable` are implemented
 
       iex> inspect Qex.new
-      "Qex<#[]>"
+      "#Qex<[]>"
 
       iex> Enum.count Qex.new(1..5)
       5
@@ -20,7 +20,7 @@ defmodule Qex do
       [2, 3, 4]
 
       iex> inspect Enum.into(1..5, %Qex{})
-      "Qex<#[1, 2, 3, 4, 5]>"
+      "#Qex<[1, 2, 3, 4, 5]>"
   """
 
   @opaque t :: %__MODULE__{}
@@ -31,12 +31,12 @@ defmodule Qex do
   Create a new queue from a range
 
       iex> inspect Qex.new(1..3)
-      "Qex<#[1, 2, 3]>"
+      "#Qex<[1, 2, 3]>"
 
   Create a new queue from a list
 
       iex> inspect Qex.new([1, 2, 3])
-      "Qex<#[1, 2, 3]>"
+      "#Qex<[1, 2, 3]>"
   """
   @spec new([term] | Range.t) :: t
   def new(init_data \\ [])
