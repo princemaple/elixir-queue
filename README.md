@@ -2,8 +2,6 @@
 
 A minimal FIFO queue implementation for Elixir
 
-A primitive queue data structure that doesn't spawn a separate process
-
 ## Protocols
 
 `Inspect` and `Enumerable` are implemented, use queues with `Enum`!
