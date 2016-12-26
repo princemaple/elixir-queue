@@ -20,3 +20,7 @@ The package can be installed as:
     ```
 
   2. Run `mix deps.get`
+
+## Why not "Queue"?
+
+The name is taken... [Hex link](https://hex.pm/packages/queue)
