@@ -5,7 +5,7 @@ defmodule Qex do
 
   ## Protocols
 
-  `Inspect` and `Enumerable` are implemented
+  `Inspect`, `Collectable` and `Enumerable` are implemented
   """
 
   @opaque t :: %__MODULE__{}

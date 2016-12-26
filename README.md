@@ -4,7 +4,8 @@ A `:queue` wrapper with improvements in API and addition of Protocol implementat
 
 ## Protocols
 
-`Inspect` and `Enumerable` are implemented, use queues with `Enum`!
+`Inspect`, `Collectable` and `Enumerable` are implemented,
+use Qex with `IO.inspect` and `Enum` functions!
 
 ## Installation
 
@@ -14,7 +15,7 @@ The package can be installed as:
 
     ```elixir
     def deps do
-      [{:qex, "~> 0.2"}]
+      [{:qex, "~> 0.3"}]
     end
     ```
 
