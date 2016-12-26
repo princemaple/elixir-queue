@@ -35,7 +35,7 @@ defmodule Qex.Mixfile do
   end
 
   defp description do
-    "A :queue wrapper with improvements in API and addition of Protocol implementations"
+    "A `:queue` wrapper with improvements in API and addition of Protocol implementations"
   end
 
   defp package do

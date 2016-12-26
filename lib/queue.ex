@@ -1,9 +1,7 @@
 defmodule Qex do
   @moduledoc ~S"""
 
-  A minimal FIFO queue implementation for Elixir
-
-  A primitive queue data structure that doesn't spawn a separate process
+  A `:queue` wrapper with improvements in API and addition of Protocol implementations
 
   ## Protocols
 
