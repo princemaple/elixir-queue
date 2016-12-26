@@ -1,7 +1,7 @@
-defimpl Inspect, for: Queue do
+defimpl Inspect, for: Qex do
   import Inspect.Algebra
 
-  def inspect(%Queue{} = q, opts) do
-    concat ["<#Queue", to_doc(Enum.to_list(q), opts), ">"]
+  def inspect(%Qex{} = q, opts) do
+    concat ["<#Qex", to_doc(Enum.to_list(q), opts), ">"]
   end
 end

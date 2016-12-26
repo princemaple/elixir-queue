@@ -1,4 +1,4 @@
-defmodule QueueTest do
+defmodule QexTest do
   use ExUnit.Case
-  doctest Queue
+  doctest Qex
 end
