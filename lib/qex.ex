@@ -10,7 +10,7 @@ defmodule Qex do
 
   @opaque t :: %__MODULE__{}
 
-  defstruct data: nil
+  defstruct data: :queue.new
 
   @spec new([term] | Range.t) :: t
   def new(init_data \\ [])
