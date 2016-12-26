@@ -6,12 +6,38 @@ defmodule Qex do
   ## Protocols
 
   `Inspect`, `Collectable` and `Enumerable` are implemented
+
+      iex> inspect Qex.new
+      "<#Qex[]>"
+
+      iex> Enum.count Qex.new(1..5)
+      5
+
+      iex> Enum.empty? Qex.new
+      true
+
+      iex> Enum.map Qex.new([1, 2, 3]), &(&1 + 1)
+      [2, 3, 4]
+
+      iex> inspect Enum.into(1..5, %Qex{})
+      "<#Qex[1, 2, 3, 4, 5]>"
   """
 
   @opaque t :: %__MODULE__{}
 
   defstruct data: :queue.new
 
+  @doc """
+  Create a new queue from a range
+
+      iex> inspect Qex.new(1..3)
+      "<#Qex[1, 2, 3]>"
+
+  Create a new queue from a list
+
+      iex> inspect Qex.new([1, 2, 3])
+      "<#Qex[1, 2, 3]>"
+  """
   @spec new([term] | Range.t) :: t
   def new(init_data \\ [])
 
@@ -23,16 +49,43 @@ defmodule Qex do
     %__MODULE__{data: :queue.from_list(list)}
   end
 
+  @doc """
+  Add an element to the back of the queue
+
+      iex> q = Qex.new([:mid])
+      iex> Enum.to_list Qex.push(q, :back)
+      [:mid, :back]
+  """
   @spec push(t, term) :: t
   def push(%__MODULE__{data: q}, item) do
     %__MODULE__{data: :queue.in(item, q)}
   end
 
+  @doc """
+  Add an element to the front of the queue
+
+      iex> q = Qex.new([:mid])
+      iex> Enum.to_list Qex.push_front(q, :front)
+      [:front, :mid]
+  """
   @spec push_front(t, term) :: t
   def push_front(%__MODULE__{data: q}, item) do
     %__MODULE__{data: :queue.in_r(item, q)}
   end
 
+  @doc """
+  Get and remove an element from the front of the queue
+
+      iex> q = Qex.new([:front, :mid])
+      iex> {{:value, item}, _q} = Qex.pop(q)
+      iex> item
+      :front
+
+      iex> q = Qex.new
+      iex> {empty, _q} = Qex.pop(q)
+      iex> empty
+      :empty
+  """
   @spec pop(t) :: {{:value, term}, t} | {:empty, t}
   def pop(%__MODULE__{data: q}) do
     case :queue.out(q) do
@@ -49,6 +102,19 @@ defmodule Qex do
     end
   end
 
+  @doc """
+  Get and remove an element from the back of the queue
+
+      iex> q = Qex.new([:mid, :back])
+      iex> {{:value, item}, _q} = Qex.pop_back(q)
+      iex> item
+      :back
+
+      iex> q = Qex.new
+      iex> {empty, _q} = Qex.pop_back(q)
+      iex> empty
+      :empty
+  """
   @spec pop_back(t) :: {{:value, term}, t} | {:empty, t}
   def pop_back(%__MODULE__{data: q}) do
     case :queue.out_r(q) do
@@ -65,11 +131,30 @@ defmodule Qex do
     end
   end
 
+  @doc """
+  Reverse a queue
+
+      iex> q = Qex.new(1..3)
+      iex> Enum.to_list q
+      [1, 2, 3]
+      iex> Enum.to_list Qex.reverse(q)
+      [3, 2, 1]
+  """
   @spec reverse(t) :: t
   def reverse(%__MODULE__{data: q}) do
     %__MODULE__{data: :queue.reverse(q)}
   end
 
+  @doc """
+  Split a queue into two, the front n items are put in the first queue
+
+      iex> q = Qex.new 1..5
+      iex> {qex1, qex2} = Qex.split(q, 3)
+      iex> Enum.to_list qex1
+      [1, 2, 3]
+      iex> Enum.to_list qex2
+      [4, 5]
+  """
   @spec split(t, pos_integer) :: {t, t}
   def split(%__MODULE__{data: q}, n) do
     with {q1, q2} <- :queue.split(n, q) do
@@ -77,6 +162,14 @@ defmodule Qex do
     end
   end
 
+  @doc """
+  Join two queues together
+
+      iex> q1 = Qex.new 1..3
+      iex> q2 = Qex.new 4..5
+      iex> Enum.to_list Qex.join(q1, q2)
+      [1, 2, 3, 4, 5]
+  """
   @spec join(t, t) :: t
   def join(%__MODULE__{data: q1}, %__MODULE__{data: q2}) do
     %__MODULE__{data: :queue.join(q1, q2)}
