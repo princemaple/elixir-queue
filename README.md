@@ -1,4 +1,4 @@
-# Qex [![Hex.pm](https://img.shields.io/hexpm/v/qex.svg)](https://hex.pm/packages/qex)
+# Qex [![Hex.pm](https://img.shields.io/hexpm/v/qex.svg)](https://hex.pm/packages/qex) [![API Docs](https://img.shields.io/badge/api-docs-blue.svg?style=flat)](https://hexdocs.pm/qex/)
 
 A minimal FIFO queue implementation for Elixir
 
@@ -19,5 +19,5 @@ The package can be installed as:
       [{:qex, "~> 0.1.0"}]
     end
     ```
-    
+
   2. Run `mix deps.get`
