@@ -2,10 +2,14 @@
 
 A `:queue` wrapper with improvements in API and addition of Protocol implementations
 
-## Protocols
+### Protocols
 
 `Inspect`, `Collectable` and `Enumerable` are implemented,
 use Qex with `IO.inspect` and `Enum` functions!
+
+### Function signatures
+
+Parameters are re-ordered to better suit Elixir's awesome `|>`
 
 ## Installation
 
