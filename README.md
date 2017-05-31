@@ -17,11 +17,11 @@ The package can be installed as:
 
   1. Add `qex` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:qex, "~> 0.3"}]
-    end
-    ```
+```elixir
+def deps do
+  [{:qex, "~> 0.3"}]
+end
+```
 
   2. Run `mix deps.get`
 
