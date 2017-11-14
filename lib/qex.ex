@@ -23,7 +23,8 @@ defmodule Qex do
       "#Qex<[1, 2, 3, 4, 5]>"
   """
 
-  @opaque t :: %__MODULE__{}
+  @opaque t(type) :: %__MODULE__{:data => :queue.queue(type)}
+  @opaque t() :: %__MODULE__{:data => :queue.queue()}
 
   defstruct data: :queue.new
 
