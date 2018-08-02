@@ -7,6 +7,6 @@ engines:
   remark-lint:
     enabled: true
 exclude_paths:
-- config
-- test
-- lib
+  - config
+  - test
+  - lib
