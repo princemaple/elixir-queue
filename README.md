@@ -19,7 +19,7 @@ The package can be installed as:
 
 ```elixir
 def deps do
-  [{:qex, "~> 0.3"}]
+  [{:qex, "~> 0.5"}]
 end
 ```
 
