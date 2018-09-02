@@ -175,4 +175,36 @@ defmodule Qex do
   def join(%__MODULE__{data: q1}, %__MODULE__{data: q2}) do
     %__MODULE__{data: :queue.join(q1, q2)}
   end
+  
+  @doc """
+  Peeking the first item in the queue,
+  returns {:value, term} tuple when an item is found,
+  :empty if none
+  
+      iex> q1 = Qex.new 1..3
+      iex> Qex.peek(q1)
+      {:value, 1}
+      iex> q2 = Qex.new []
+      iex> Qex.peek(q2)
+      :empty
+  """
+  @spec peek(t) :: {:value, term} | :empty
+  def peek(%__MODULE__{data: q}) do
+    :queue.peek(q)
+  end
+
+  @doc """
+  Peeking the first item in the queue, raise if it's empty
+  
+      iex> q1 = Qex.new 1..3
+      iex> Qex.peek!(q1)
+      1
+  """
+  @spec peek!(t) :: term | no_return
+  def peek!(%__MODULE__{data: q}) do
+    case :queue.peek(q) do
+      {:value, v} -> v
+      :empty -> raise "Queue is empty"
+    end
+  end
 end
