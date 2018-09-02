@@ -136,6 +136,36 @@ iex> Enum.to_list Qex.join(q1, q2)
 [1, 2, 3, 4, 5]
 ```
 
+#### Return the first item
+
+```elixir
+iex> q1 = Qex.new 1..3
+iex> Qex.first(q1)
+{:value, 1}
+iex> q2 = Qex.new []
+iex> Qex.first(q2)
+:empty
+
+iex> q1 = Qex.new 1..3
+iex> Qex.first!(q1)
+1
+```
+
+#### Return the last item
+
+```elixir
+iex> q1 = Qex.new 1..3
+iex> Qex.last(q1)
+{:value, 3}
+iex> q2 = Qex.new []
+iex> Qex.last(q2)
+:empty
+
+iex> q1 = Qex.new 1..3
+iex> Qex.last!(q1)
+3
+```
+
 ## Why not "Queue"?
 
 The name is taken... [Hex link](https://hex.pm/packages/queue)
