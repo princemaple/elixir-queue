@@ -177,32 +177,62 @@ defmodule Qex do
   end
   
   @doc """
-  Peeking the first item in the queue,
-  returns {:value, term} tuple when an item is found,
-  :empty if none
+  Return the first item in the queue in {:value, term} tuple,
+  return :empty if the queue is empty
   
       iex> q1 = Qex.new 1..3
-      iex> Qex.peek(q1)
+      iex> Qex.first(q1)
       {:value, 1}
       iex> q2 = Qex.new []
-      iex> Qex.peek(q2)
+      iex> Qex.first(q2)
       :empty
   """
-  @spec peek(t) :: {:value, term} | :empty
-  def peek(%__MODULE__{data: q}) do
+  @spec first(t) :: {:value, term} | :empty
+  def first(%__MODULE__{data: q}) do
     :queue.peek(q)
   end
 
   @doc """
-  Peeking the first item in the queue, raise if it's empty
+  Retun the first item in the queue, raise if it's empty
   
       iex> q1 = Qex.new 1..3
-      iex> Qex.peek!(q1)
+      iex> Qex.first!(q1)
       1
   """
-  @spec peek!(t) :: term | no_return
-  def peek!(%__MODULE__{data: q}) do
+  @spec first!(t) :: term | no_return
+  def first!(%__MODULE__{data: q}) do
     case :queue.peek(q) do
+      {:value, v} -> v
+      :empty -> raise "Queue is empty"
+    end
+  end
+  
+  @doc """
+  Return the last item in the queue in {:value, term} tuple,
+  return :empty if the queue is empty
+  
+      iex> q1 = Qex.new 1..3
+      iex> Qex.last(q1)
+      {:value, 1}
+      iex> q2 = Qex.new []
+      iex> Qex.last(q2)
+      :empty
+  """
+  @spec last(t) :: {:value, term} | :empty
+  def last(%__MODULE__{data: q}) do
+    :queue.peek_r(q)
+  end
+
+  @doc """
+  Retun the last item in the queue, raise if it's empty
+  
+      iex> q1 = Qex.new 1..3
+      iex> Qex.last!(q1)
+      1
+  """
+  @spec last!(t) :: term | no_return
+  def last!(%__MODULE__{data: q}) do
+    case :queue.peek_r(q) do
       {:value, v} -> v
       :empty -> raise "Queue is empty"
     end
