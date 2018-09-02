@@ -213,7 +213,7 @@ defmodule Qex do
   
       iex> q1 = Qex.new 1..3
       iex> Qex.last(q1)
-      {:value, 1}
+      {:value, 3}
       iex> q2 = Qex.new []
       iex> Qex.last(q2)
       :empty
@@ -228,7 +228,7 @@ defmodule Qex do
   
       iex> q1 = Qex.new 1..3
       iex> Qex.last!(q1)
-      1
+      3
   """
   @spec last!(t) :: term | no_return
   def last!(%__MODULE__{data: q}) do
