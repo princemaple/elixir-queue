@@ -1,16 +1,28 @@
 defmodule Qex.Mixfile do
   use Mix.Project
 
-  def project do
-    [app: :qex,
-     version: "0.5.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps(),
+  @source_url "https://github.com/princemaple/elixir-queue"
+  @version "0.5.0"
 
-     description: description(),
-     package: package()]
+  def project do
+    [
+      app: :qex,
+      version: @version,
+      elixir: "~> 1.9",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+
+      # Hex
+      description: description(),
+      package: package(),
+
+      # Docs
+      name: "Qex",
+      source_url: @source_url,
+      homepage_url: @source_url,
+      docs: docs()
+    ]
   end
 
   def application do
@@ -26,8 +38,20 @@ defmodule Qex.Mixfile do
   end
 
   defp package do
-    [licenses: ["MIT"],
-     maintainers: ["Po Chen"],
-     links: %{"GitHub": "https://github.com/princemaple/elixir-queue"}]
+    [
+      licenses: ["MIT"],
+      maintainers: ["Po Chen"],
+      links: %{GitHub: "https://github.com/princemaple/elixir-queue"}
+    ]
+  end
+
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      main: "Qex",
+      canonical: "http://hexdocs.pm/qex",
+      source_url: @source_url,
+      extras: ["CHANGELOG.md"]
+    ]
   end
 end
