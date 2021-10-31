@@ -46,6 +46,10 @@ iex> Enum.map Qex.new([1, 2, 3]), &(&1 + 1)
 
 iex> inspect Enum.into(1..5, %Qex{})
 "#Qex<[1, 2, 3, 4, 5]>"
+
+# Leverages :queue.member/2 under the hood for performance
+iex> Enum.member? Qex.new(1..10_000), 9_999
+true
 ```
 
 #### Create a new queue from a range
