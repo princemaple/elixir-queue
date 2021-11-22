@@ -30,7 +30,7 @@ defmodule Qex.Mixfile do
   end
 
   defp deps do
-    [{:ex_doc, ">= 0.0.0", only: :dev}]
+    [{:ex_doc, ">= 0.0.0", only: :docs, runtime: false}]
   end
 
   defp description do
