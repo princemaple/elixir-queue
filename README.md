@@ -1,4 +1,11 @@
-# Qex [![Hex.pm](https://img.shields.io/hexpm/v/qex.svg)](https://hex.pm/packages/qex) [![Documentation](https://img.shields.io/badge/docs-hexpm-blue.svg)](https://hexdocs.pm/qex/Qex.html)
+# Qex
+
+[![Elixir CI](https://github.com/princemaple/elixir-queue/actions/workflows/elixir.yml/badge.svg)](https://github.com/princemaple/elixir-queue/actions/workflows/elixir.yml)
+[![Module Version](https://img.shields.io/hexpm/v/qex.svg)](https://hex.pm/packages/qex)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/qex/)
+[![Total Download](https://img.shields.io/hexpm/dt/qex.svg)](https://hex.pm/packages/qex)
+[![License](https://img.shields.io/hexpm/l/qex.svg)](https://github.com/princemaple/elixir-queue/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/princemaple/elixir-queue.svg)](https://github.com/princemaple/elixir-queue/commits/master)
 
 A `:queue` wrapper with improvements in API and addition of Protocol implementations
 
@@ -15,15 +22,17 @@ Parameters are re-ordered to better suit Elixir's awesome `|>`
 
 The package can be installed as:
 
-  1. Add `qex` to your list of dependencies in `mix.exs`:
+1. Add `:qex` to your list of dependencies in `mix.exs`:
 
-```elixir
-def deps do
-  [{:qex, "~> 0.5"}]
-end
-```
+   ```elixir
+   def deps do
+     [
+       {:qex, "~> 0.5"}
+     ]
+   end
+   ```
 
-  2. Run `mix deps.get`
+2. Run `mix deps.get`
 
 ## How to use
 
@@ -173,3 +182,10 @@ iex> Qex.last!(q1)
 ## Why not "Queue"?
 
 The name is taken... [Hex link](https://hex.pm/packages/queue)
+
+## Copyright and License
+
+Copyright (c) 2018 Po Chen
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.
