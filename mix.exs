@@ -7,21 +7,14 @@ defmodule Qex.Mixfile do
   def project do
     [
       app: :qex,
+      name: "Qex",
       version: @version,
       elixir: "~> 1.9",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-
-      # Hex
-      description: description(),
-      package: package(),
-
-      # Docs
-      name: "Qex",
-      source_url: @source_url,
-      homepage_url: @source_url,
-      docs: docs()
+      docs: docs(),
+      package: package()
     ]
   end
 
@@ -33,25 +26,31 @@ defmodule Qex.Mixfile do
     [{:ex_doc, ">= 0.0.0", only: :docs, runtime: false}]
   end
 
-  defp description do
-    "A `:queue` wrapper with improvements in API and addition of Protocol implementations"
-  end
-
   defp package do
     [
+      description:
+        "A `:queue` wrapper with improvements in API and addition of Protocol implementations",
       licenses: ["MIT"],
       maintainers: ["Po Chen"],
-      links: %{GitHub: "https://github.com/princemaple/elixir-queue"}
+      links: %{
+        Changelog: "https://hexdocs.pm/qex/changelog.html",
+        GitHub: @source_url
+      }
     ]
   end
 
   defp docs do
     [
-      source_ref: "v#{@version}",
-      main: "Qex",
+      extras: [
+        "CHANGELOG.md": [],
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
       canonical: "http://hexdocs.pm/qex",
+      homepage_url: @source_url,
       source_url: @source_url,
-      extras: ["CHANGELOG.md"]
+      source_ref: "v#{@version}"
     ]
   end
 end
