@@ -2,7 +2,7 @@ defmodule Qex.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/princemaple/elixir-queue"
-  @version "0.5.0"
+  @version "0.5.1"
 
   def project do
     [
