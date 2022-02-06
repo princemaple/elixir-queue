@@ -14,7 +14,11 @@ defmodule Qex.Mixfile do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
-      package: package()
+      package: package(),
+      preferred_cli_env: [
+        docs: :docs,
+        "hex.publish": :docs
+      ],
     ]
   end
 
