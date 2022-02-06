@@ -18,7 +18,7 @@ defmodule Qex.Mixfile do
       preferred_cli_env: [
         docs: :docs,
         "hex.publish": :docs
-      ],
+      ]
     ]
   end
 
