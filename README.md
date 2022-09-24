@@ -185,7 +185,7 @@ The name is taken... [Hex link](https://hex.pm/packages/queue)
 
 ## Copyright and License
 
-Copyright (c) 2018 Po Chen
+Copyright (c) 2022 Po Chen
 
 This work is free. You can redistribute it and/or modify it under the
 terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.
