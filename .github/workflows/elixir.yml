@@ -1,43 +1,7 @@
 name: Elixir CI
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        elixir: ['1.14', '1.13', '1.12', '1.11']
-        otp: ['25.x', '24.x', '23.x']
-        exclude:
-          - elixir: '1.12'
-            otp: '25.x'
-          - elixir: '1.11'
-            OTP: '25.x'
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup BEAM
-        uses: erlef/setup-beam@v1
-        with:
-          elixir-version: ${{ matrix.elixir }}
-          otp-version: ${{ matrix.otp }}
-
-      - name: Restore dependencies cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            deps
-            _build
-          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-          restore-keys: ${{ runner.os }}-mix-
-
-      - name: Install Dependencies
-        run: mix deps.get
-
-      - name: Run Tests
-        run: mix test
+  test:
+    uses: swoosh/actions/.github/workflows/test.yml@main
