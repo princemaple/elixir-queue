@@ -26,7 +26,7 @@ defmodule Qex do
   @opaque t(type) :: %__MODULE__{:data => :queue.queue(type)}
   @opaque t() :: %__MODULE__{:data => :queue.queue()}
 
-  defstruct data: :queue.new
+  defstruct data: :queue.new()
 
   @doc """
   Create a new queue from a range
@@ -39,7 +39,7 @@ defmodule Qex do
       iex> inspect Qex.new([1, 2, 3])
       "#Qex<[1, 2, 3]>"
   """
-  @spec new([term] | Range.t) :: t
+  @spec new([term] | Range.t()) :: t
   def new(init_data \\ [])
 
   def new(x..y) do
@@ -175,11 +175,11 @@ defmodule Qex do
   def join(%__MODULE__{data: q1}, %__MODULE__{data: q2}) do
     %__MODULE__{data: :queue.join(q1, q2)}
   end
-  
+
   @doc """
   Return the first item in the queue in {:value, term} tuple,
   return :empty if the queue is empty
-  
+
       iex> q1 = Qex.new 1..3
       iex> Qex.first(q1)
       {:value, 1}
@@ -194,7 +194,7 @@ defmodule Qex do
 
   @doc """
   Retun the first item in the queue, raise if it's empty
-  
+
       iex> q1 = Qex.new 1..3
       iex> Qex.first!(q1)
       1
@@ -206,11 +206,11 @@ defmodule Qex do
       :empty -> raise "Queue is empty"
     end
   end
-  
+
   @doc """
   Return the last item in the queue in {:value, term} tuple,
   return :empty if the queue is empty
-  
+
       iex> q1 = Qex.new 1..3
       iex> Qex.last(q1)
       {:value, 3}
@@ -225,7 +225,7 @@ defmodule Qex do
 
   @doc """
   Retun the last item in the queue, raise if it's empty
-  
+
       iex> q1 = Qex.new 1..3
       iex> Qex.last!(q1)
       3

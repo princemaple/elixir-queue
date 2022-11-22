@@ -8,6 +8,6 @@ defimpl Enumerable, for: Qex do
   def reduce(%Qex{data: q}, acc, fun) do
     Enumerable.List.reduce(:queue.to_list(q), acc, fun)
   end
-  
+
   def slice(%Qex{}), do: {:error, __MODULE__}
 end
