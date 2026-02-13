@@ -237,4 +237,17 @@ defmodule Qex do
       :empty -> raise "Queue is empty"
     end
   end
+
+  @doc """
+  Return the number of elements in the queue.
+  This operation takes linear time.
+
+      iex> q1 = Qex.new 1..3
+      iex> Qex.len(q1)
+      3
+  """
+  @spec len(t) :: non_neg_integer
+  def len(%__MODULE__{data: q}) do
+    :queue.len(q)
+  end
 end
