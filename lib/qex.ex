@@ -193,7 +193,7 @@ defmodule Qex do
   end
 
   @doc """
-  Retun the first item in the queue, raise if it's empty
+  Return the first item in the queue, raise if it's empty
 
       iex> q1 = Qex.new 1..3
       iex> Qex.first!(q1)
@@ -224,7 +224,7 @@ defmodule Qex do
   end
 
   @doc """
-  Retun the last item in the queue, raise if it's empty
+  Return the last item in the queue, raise if it's empty
 
       iex> q1 = Qex.new 1..3
       iex> Qex.last!(q1)
