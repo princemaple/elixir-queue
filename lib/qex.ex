@@ -147,7 +147,11 @@ defmodule Qex do
   end
 
   @doc """
-  Split a queue into two, the front n items are put in the first queue
+  Split a queue into two, the front n items (up to all items) are put in the first queue
+
+  Unlike :queue.split/2, which raises an ArgumentError when you ask to split more elements,
+  this matches the behavior of Enum.split/2 by silently returning the minimum of the
+  requested number of items and the complete queue.
 
       iex> q = Qex.new 1..5
       iex> {q1, q2} = Qex.split(q, 3)
@@ -155,10 +159,17 @@ defmodule Qex do
       [1, 2, 3]
       iex> Enum.to_list q2
       [4, 5]
+      iex> {q_full, q_empty} = Qex.split(q, 1_000)
+      iex> Enum.to_list q_full
+      [1, 2, 3, 4, 5]
+      iex> Enum.to_list q_empty
+      []
   """
   @spec split(t, pos_integer) :: {t, t}
   def split(%__MODULE__{data: q}, n) do
-    with {q1, q2} <- :queue.split(n, q) do
+    count = min(:queue.len(q), n)
+
+    with {q1, q2} <- :queue.split(count, q) do
       {%__MODULE__{data: q1}, %__MODULE__{data: q2}}
     end
   end
